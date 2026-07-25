@@ -45,7 +45,7 @@ export default function LearnPage() {
     fetchResources();
   }, [router]);
 
-  const fetchResources = async () => {
+  async function fetchResources() {
     setLoading(true);
     try {
       const res = await fetch('/api/resources');
@@ -58,7 +58,7 @@ export default function LearnPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
     <div className="min-h-screen pb-24 relative overflow-hidden">

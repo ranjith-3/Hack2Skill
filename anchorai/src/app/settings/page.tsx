@@ -34,7 +34,7 @@ export default function SettingsPage() {
     setProfile(p);
     setEditSubstance(p.substance);
     setEditCopingStyle(p.copingStyle);
-    setEditSobrietyDate(p.sobrietyStartDate ? new Date(p.sobrietyStartDate).toISOString().split('T')[0] : '');
+    setEditSobrietyDate(p.sobrietyStartDate ? new Date(p.sobrietyStartDate).toISOString().split('T')[0] || '' : '');
     setStats({
       checkIns: getCheckIns().length,
       crisisEvents: getCrisisEvents().length,

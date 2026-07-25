@@ -36,7 +36,7 @@ describe('generateWithFlash', () => {
     });
 
     await generateWithFlash('sys', 'user');
-    const callArgs = mockFetch.mock.calls[0][1];
+    const callArgs = mockFetch.mock.calls[0]![1]! as { headers: Record<string, string> };
     expect(callArgs.headers['Authorization']).toBe('Bearer sk-test-key');
     expect(callArgs.headers['Content-Type']).toBe('application/json');
     expect(callArgs.headers['X-Title']).toBe('AnchorAI');
@@ -51,7 +51,7 @@ describe('generateWithFlash', () => {
     });
 
     await generateWithFlash('my system prompt', 'my user prompt', 500, 0.5);
-    const body = JSON.parse(mockFetch.mock.calls[0][1].body);
+    const body = JSON.parse(mockFetch.mock.calls[0]![1]!.body as string);
     expect(body.messages).toEqual([
       { role: 'system', content: 'my system prompt' },
       { role: 'user', content: 'my user prompt' },
@@ -69,7 +69,7 @@ describe('generateWithFlash', () => {
     });
 
     await generateWithFlash('sys', 'user');
-    const body = JSON.parse(mockFetch.mock.calls[0][1].body);
+    const body = JSON.parse(mockFetch.mock.calls[0]![1]!.body as string);
     expect(body.model).toBe('openai/gpt-4o-mini');
   });
 
@@ -137,7 +137,7 @@ describe('generateWithPro', () => {
     });
 
     await generateWithPro('sys', 'user');
-    const body = JSON.parse(mockFetch.mock.calls[0][1].body);
+    const body = JSON.parse(mockFetch.mock.calls[0]![1]!.body as string);
     expect(body.model).toBe('openai/gpt-4o');
   });
 
@@ -150,7 +150,7 @@ describe('generateWithPro', () => {
     });
 
     await generateWithPro('sys', 'user');
-    const body = JSON.parse(mockFetch.mock.calls[0][1].body);
+    const body = JSON.parse(mockFetch.mock.calls[0]![1]!.body as string);
     expect(body.max_tokens).toBe(1000);
   });
 });

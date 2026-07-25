@@ -7,12 +7,7 @@ import {
   buildJournalReframePrompt,
   buildGroundingExercisePrompt,
   CRISIS_SYSTEM_PROMPT,
-  ALERT_SYSTEM_PROMPT,
-  RESOURCE_GENERATION_PROMPT,
-  RESOURCE_SYSTEM_PROMPT,
-  CHECKIN_SYSTEM_PROMPT,
-  JOURNAL_SYSTEM_PROMPT,
-  SCRIPT_SYSTEM_PROMPT
+  RESOURCE_GENERATION_PROMPT
 } from '@/lib/prompts';
 
 describe('Prompt Templates', () => {

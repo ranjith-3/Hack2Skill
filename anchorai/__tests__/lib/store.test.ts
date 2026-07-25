@@ -94,7 +94,7 @@ describe('Store — Check-ins', () => {
     };
     saveCheckIn(checkIn);
     expect(getCheckIns()).toHaveLength(1);
-    expect(getCheckIns()[0].mood).toBe(3);
+    expect(getCheckIns()[0]!.mood).toBe(3);
   });
 
   it('appends multiple check-ins', () => {
@@ -122,7 +122,7 @@ describe('Store — Check-ins', () => {
     saveCheckIn(old);
     saveCheckIn(recent);
     expect(getRecentCheckIns(7)).toHaveLength(1);
-    expect(getRecentCheckIns(7)[0].id).toBe('2');
+    expect(getRecentCheckIns(7)[0]!.id).toBe('2');
   });
 });
 
