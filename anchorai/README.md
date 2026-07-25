@@ -6,7 +6,7 @@ A voice-first, zero-typing, AI-powered recovery and prevention platform that int
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
-![Gemini](https://img.shields.io/badge/Google_Gemini-AI-green?logo=google)
+![Gemini](https://img.shields.io/badge/OpenRouter-AI-green?logo=openai)
 
 ## 🎯 Problem Statement
 
@@ -36,17 +36,17 @@ Design and build a multi-modal, GenAI-powered recovery and prevention platform t
 
 | Service | Model | Where Used |
 |---|---|---|
-| **Google Gemini Flash** | `gemini-2.0-flash` | Crisis intervention responses, caregiver alert drafting, daily check-in analysis, journal cognitive reframes |
-| **Google Gemini Pro** | `gemini-2.0-flash` | Personalized emergency script generation (at onboarding), educational resource card generation |
+| **OpenRouter (GPT-4o-mini)** | `gpt-4o-mini` | Crisis intervention responses, caregiver alert drafting, daily check-in analysis, journal cognitive reframes |
+| **OpenRouter (GPT-4o)** | `gpt-4o` | Personalized emergency script generation (at onboarding), educational resource card generation |
 | **Web Speech API** | Browser native | Voice input (STT) for crisis trigger + journal entry; Text-to-speech (TTS) for reading crisis scripts aloud |
 
 ### AI Integration Points
-1. `/api/crisis` — Gemini Flash generates real-time personalized crisis intervention scripts
-2. `/api/script` — Gemini Pro creates deep, 90-second emergency scripts at onboarding
-3. `/api/alert` — Gemini Flash drafts warm, non-alarming caregiver notifications
-4. `/api/resources` — Gemini Pro generates structured educational resource cards (JSON)
-5. `/api/checkin` — Gemini Flash analyzes 7-day mood/craving patterns
-6. `/api/journal` — Gemini Flash provides compassionate cognitive reframes
+1. `/api/crisis` — GPT-4o-mini generates real-time personalized crisis intervention scripts
+2. `/api/script` — GPT-4o creates deep, 90-second emergency scripts at onboarding
+3. `/api/alert` — GPT-4o-mini drafts warm, non-alarming caregiver notifications
+4. `/api/resources` — GPT-4o generates structured educational resource cards (JSON)
+5. `/api/checkin` — GPT-4o-mini analyzes 7-day mood/craving patterns
+6. `/api/journal` — GPT-4o-mini provides compassionate cognitive reframes
 
 ## 🏗️ Tech Stack
 
@@ -55,7 +55,7 @@ Design and build a multi-modal, GenAI-powered recovery and prevention platform t
 | **Frontend** | Next.js 14 (App Router) + TypeScript |
 | **Styling** | Tailwind CSS (custom design system) |
 | **Voice I/O** | Web Speech API (browser native) |
-| **AI Engine** | Google Gemini API via `@google/generative-ai` |
+| **AI Engine** | OpenRouter API (native fetch w/ retries) |
 | **Data** | LocalStorage (privacy-first, no PII on servers) |
 | **Validation** | Zod schema validation on all API routes |
 | **Deployment** | Vercel / Antigravity |
@@ -64,7 +64,7 @@ Design and build a multi-modal, GenAI-powered recovery and prevention platform t
 
 ### Prerequisites
 - Node.js 18+
-- Google Gemini API key from [aistudio.google.com](https://aistudio.google.com)
+- OpenRouter API key from [openrouter.ai](https://openrouter.ai)
 
 ### Installation
 
@@ -78,7 +78,8 @@ npm install
 
 # Set up environment variables
 cp .env.local.example .env.local
-# Edit .env.local and add your GEMINI_API_KEY
+# Edit .env.local and add your OPENROUTER_API_KEY
+# Edit .env.local and add your EMAIL_USER and EMAIL_PASS
 
 # Run development server
 npm run dev
@@ -91,7 +92,7 @@ Open [http://localhost:3000](http://localhost:3000) in Chrome or Edge (recommend
 - ✅ All user data stored locally on device (localStorage)
 - ✅ No PII sent to or stored on servers
 - ✅ Voice recordings are never stored — processed by browser only
-- ✅ Gemini API key stored in server-side environment variables only
+- ✅ OpenRouter API key and SMTP credentials stored in server-side environment variables only
 - ✅ Zod input validation on all API routes
 - ✅ HTTPS enforced in production
 
