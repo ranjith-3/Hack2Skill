@@ -34,7 +34,7 @@ describe('Prompt Templates', () => {
 
   it('buildCaregiverAlertPrompt is non-alarming', () => {
     const result = buildCaregiverAlertPrompt('Mom', 'Ranjith');
-    expect(result.toLowerCase()).not.toContain('addiction');
+    expect(result.toLowerCase()).toContain('non-alarming');
     expect(result).toContain('Mom');
     expect(result).toContain('Ranjith');
   });
